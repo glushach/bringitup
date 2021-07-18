@@ -992,10 +992,10 @@ function () {
           setTimeout(function () {
             _this.hanson.style.opacity = '1';
 
-            _this.hanson.classList.classList.add('slideInUp');
+            _this.hanson.classList.add('slideInUp');
           }, 3000);
         } else {
-          this.hanson.classList.classList.remove('slideInUp');
+          this.hanson.classList.remove('slideInUp');
         }
       } catch (e) {}
 
