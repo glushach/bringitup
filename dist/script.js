@@ -3168,18 +3168,35 @@ function (_Slider) {
       });
     }
   }, {
-    key: "init",
-    value: function init() {
+    key: "activateAnimation",
+    value: function activateAnimation() {
       var _this3 = this;
 
+      var play = setInterval(function () {
+        return _this3.nextSlide();
+      }, 5000);
+      this.slides[0].parentNode.addEventListener('mouseenter', function () {
+        clearInterval(play);
+      });
+      this.slides[0].parentNode.addEventListener('mouseleave', function () {
+        _this3.activateAnimation();
+      });
+      this.next.parentNode.addEventListener('mouseenter', function () {
+        clearInterval(play);
+      });
+      this.next.parentNode.addEventListener('mouseleave', function () {
+        _this3.activateAnimation();
+      });
+    }
+  }, {
+    key: "init",
+    value: function init() {
       this.container.style.cssText = "\n            display: flex;\n            flex-wrap: wrap;\n            overflow: hidden;\n            align-items: flex-start;\n        ";
       this.bindTriggers();
       this.decorizeSlides();
 
       if (this.autoplay) {
-        setInterval(function () {
-          return _this3.nextSlide();
-        }, 5000);
+        this.activateAnimation();
       }
     }
   }]);

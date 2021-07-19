@@ -56,6 +56,23 @@ export default class MiniSlider extends Slider {
         });
     }
 
+    activateAnimation() {
+        const play = setInterval(() => this.nextSlide(), 5000);
+        
+        this.slides[0].parentNode.addEventListener('mouseenter', () => {
+                clearInterval(play);
+            });
+        this.slides[0].parentNode.addEventListener('mouseleave', () => {
+                this.activateAnimation();
+            });
+        this.next.parentNode.addEventListener('mouseenter', () => {
+            clearInterval(play);
+        });
+        this.next.parentNode.addEventListener('mouseleave', () => {
+            this.activateAnimation();
+        });
+    }
+
     init() {
         this.container.style.cssText = `
             display: flex;
@@ -68,7 +85,7 @@ export default class MiniSlider extends Slider {
         this.decorizeSlides();
 
         if (this.autoplay) {
-            setInterval(() => this.nextSlide(), 5000);
+            this.activateAnimation();
         }
     }
 }
