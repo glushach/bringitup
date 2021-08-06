@@ -9,7 +9,7 @@ export default class Slider {
         autoplay
         } = {}) {
         this.container = document.querySelector(container);
-        try {this.slides = this.container.children} catch(e) {}
+        try {this.slides = this.container.children} catch(e) {} //каждый блок внутри h
         this.btns = document.querySelectorAll(btns);
         this.prev = document.querySelector(prev);
         this.next = document.querySelector(next);
