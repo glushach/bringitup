@@ -5697,20 +5697,20 @@ function (_Slider) {
           _this2.showSlides(_this2.SlideIndex);
         });
       });
-      document.querySelectorAll('.prevmodule').forEach(function (item) {
+      this.handleButtons('.prevmodule', -1);
+      this.handleButtons('.nextmodule', 1);
+    }
+  }, {
+    key: "handleButtons",
+    value: function handleButtons(selector, index) {
+      var _this3 = this;
+
+      document.querySelectorAll(selector).forEach(function (item) {
         item.addEventListener('click', function (e) {
           e.stopPropagation();
           e.preventDefault();
 
-          _this2.plusSlides(-1);
-        });
-      });
-      document.querySelectorAll('.nextmodule').forEach(function (item) {
-        item.addEventListener('click', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-
-          _this2.plusSlides(1);
+          _this3.plusSlides(index);
         });
       });
     }
